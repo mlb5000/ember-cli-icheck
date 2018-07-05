@@ -8,13 +8,13 @@ module.exports = {
     this._super.included(app);
 
     if (!process.env.EMBER_CLI_FASTBOOT) {
-      app.import(app.bowerDirectory + '/iCheck/icheck.min.js');
+      app.import('node_modules/icheck/icheck.min.js');
     }
 
     app.options = app.options || {}; // Ensures options exists for Scss/Less below
     let options = app.options['emberCliIcheck'] || {};
-    
-    let skinsPath = path.join(app.bowerDirectory, 'iCheck/skins/');
+
+    let skinsPath = path.join('node_modules/icheck/skins/');
 
     let skins = options.skins || ['square'];
     let colors = options.colors || ['blue'];
