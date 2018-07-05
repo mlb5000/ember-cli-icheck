@@ -39,6 +39,7 @@
     "configPath": "tests/dummy/config"
   },
   "dependencies": {
+    "ember-cli-babel": "^6.14.1",
     "icheck": "^1.0.2"
   }
 }
