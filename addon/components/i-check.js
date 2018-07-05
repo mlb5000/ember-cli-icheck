@@ -1,15 +1,18 @@
-import Ember from 'ember';
+import Checkbox from '@ember/component/checkbox';
+import { observer } from '@ember/object';
+import $ from 'jquery';
+import { assert } from '@ember/debug';
 
-export default Ember.Checkbox.extend({
+export default Checkbox.extend({
 
 	_icheck: null, // iCheck instance
 
-	setup: function() {
+	didInsertElement() {
 		var that = this;
 
-		Ember.assert("iCheck has to exist on Ember.$.fn.iCheck", !!Ember.$.fn.iCheck);
+		assert("iCheck has to exist on $.fn.iCheck", !!$.fn.iCheck);
 
-		var icheck = this.$().iCheck({
+		var icheck = $().iCheck({
 			// base class added to customized checkboxes
 			checkboxClass: this.getWithDefault('checkboxClass', 'icheckbox_square-blue'),
 			// base class added to customized radio buttons
@@ -73,20 +76,17 @@ export default Ember.Checkbox.extend({
 		});
 
 		this.set('_icheck', icheck);
+	},
 
-	}.on('didInsertElement'),
-
-	_checkedChanged: function() {
+	checkedChanged: observer('checked', function() {
 		var checked = this.get('checked') ? 'check' : 'uncheck';
 		this.get('_icheck').iCheck(checked);
-	}.observes('checked'),
+	}),
 
-	teardown: function() {
-
+	willDestroyElement() {
 		if (this._icheck) {
 			this.$().iCheck('destroy');
 		}
-
-		this.removeObserver('checked', this._checkedChanged);
-	}.on('willDestroyElement')
+    this.removeObserver('checked', this._checkedChanged);
+	}
 });

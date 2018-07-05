@@ -1,5 +1,6 @@
 'use strict';
-var path = require('path');
+
+const path = require('path');
 
 module.exports = {
   name: 'ember-cli-icheck',

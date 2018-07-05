@@ -2,8 +2,6 @@
 
 ember-cli addon component for [iCheck](http://fronteed.com/iCheck/)
 
-## Update: Not maintained anymore.
-
 ## Installation
 
 * `ember install ember-cli-icheck`
@@ -28,7 +26,7 @@ The configuration should be done in your `config/enviroment.js` file, for exampl
 ```
 module.exports = function(environment) {
   var ENV = {
-    // ... 
+    // ...
     emberCliIcheck: {
       colors: ['green'],
       skins: ['flat']
@@ -36,4 +34,3 @@ module.exports = function(environment) {
   };
 }
 ```
-
