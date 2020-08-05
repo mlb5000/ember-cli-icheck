@@ -11,7 +11,7 @@ export default Checkbox.extend({
 
     assert("iCheck has to exist on $.fn.iCheck", !!$.fn.iCheck);
 
-    var icheck = $().iCheck({
+    var icheck = $(this.element).iCheck({
       // base class added to customized checkboxes
       checkboxClass: this.getWithDefault(
         "checkboxClass",
